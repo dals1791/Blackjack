@@ -1,18 +1,4 @@
-// const cardDeck = [
-//     "Ace-Spade", "Ace-Heart", "Ace-Club", "Ace-Diamond",
-//     "2-Spade", "2-Heart", "2-Club", "2-Diamond",
-//     "3-Spade", "3-Heart", "3-Club", "3-Diamond",
-//     "4-Spade", "4-Heart", "4-Club", "4-Diamond",
-//     "5-Spade", "5-Heart", "5-Club", "5-Diamond",
-//     "6-Spade", "6-Heart", "6-Club", "6-Diamond",
-//     "7-Spade", "7-Heart", "7-Club", "7-Diamond",
-//     "8-Spade", "8-Heart", "8-Club", "8-Diamond",
-//     "9-Spade", "9-Heart", "9-Club", "9-Diamond",
-//     "10-Spade", "10-Heart", "10-Club", "10-Diamond",
-//     "Jack-Spade", "Jack-Heart", "Jack-Club", "Jack-Diamond",
-//     "Queen-Spade", "Queen-Heart", "Queen-Club", "Queen-Diamond",
-//     "King-Spade", "King-Heart", "King-Club", "King-Diamond",
-//     ]
+// Creates a card Deck and stores the card object into an array
 let cardDeck = []
     const createCardDeck = function (){
         
@@ -60,23 +46,50 @@ let cardDeck = []
     }
 
 createCardDeck()
-console.log(cardDeck)
-
-
-   const player = function (){
-
-   }
+// ------------------------------------------------------------
+// Pulls a random card from the deck and removes it from the deck.
 const createCard = function (){
-      const randCard = Math.floor(Math.random()*cardDeck.length);
-      const card = cardDeck[randCard]
-      const $div = $("<div>")
-      $div.addClass("card")
-      $div.html(card.description)
-      
-      cardDeck.splice(randCard, 1)
-      return $div
+    const randCard = Math.floor(Math.random()*cardDeck.length);
+    const card = cardDeck[randCard]
+    const $div = $("<div>")
+    $div.addClass("card")
+    $div.html(card.description)
+    
+    cardDeck.splice(randCard, 1)
+    return $div
+}
+const playerScore = function (){
+    const playerScore = null
+    const $cardValues = $("section .playerCards").children()
+    // add foreach function to loop through and add value of each child
+
+
 }
 
+// ------------------------------------------------------------
+// Deals two starting cards to the player and dealer
+const dealCards = function (){
+    const $dealCards = $(".dealButton")
+    $dealCards.on("click", (event)=>{
+        const playerCard1= createCard()
+        const playerCard2 = createCard()
+        const dealerCard1 = createCard()
+        const dealerCard2 = createCard()
+
+        const $playerSection = $("section .playerCards")
+        const $dealerSection = $("section .dealerCards")
+
+        $playerSection.append(playerCard1)
+        $playerSection.append(playerCard2)
+        $dealerSection.append(dealerCard1)
+        $dealerSection.append(dealerCard2)
+    })
+}
+dealCards()
+
+
+// ------------------------------------------------------------
+// Adds card to player hands
 const hitCard = function (){
     const $hitCard = $("button.hitButton")
     $hitCard.on("click", (event)=>{
@@ -84,7 +97,6 @@ const hitCard = function (){
     const $playerCards = $(".playerCards")
     $playerCards.append(newCard)
 })
-
 }
 hitCard()
 

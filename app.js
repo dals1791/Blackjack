@@ -1,3 +1,6 @@
+var dealerScore1
+var playerScore1
+
 // Creates a card Deck and stores the card object into an array
 let cardDeck = []
     const createCardDeck = function (){
@@ -61,7 +64,7 @@ const createCard = function (){
     return $div
     // console.log(cardValue)
 }
-const playerScore = function (){
+var playerPoints = function (){
     
     const cardValues = $("section .playerCards").children()
     
@@ -75,14 +78,15 @@ const playerScore = function (){
     const adder = function (accumulator, value){
         return accumulator+value
     }
-    const playerScore = "Player has " + cardValuesArray.reduce(adder)
+     playerScore1 = cardValuesArray.reduce(adder)
 
-    console.log(playerScore)
-    return playerScore
+    // console.log(playerScore)
+//    playerScore1 = playerScore
+    // console.log(playerScore1)
     
 
 }
-const dealerScore = function (){
+var dealerPoints = function (){
     
     const cardValues = $("section .dealerCards").children()
     
@@ -96,12 +100,11 @@ const dealerScore = function (){
     const adder = function (accumulator, value){
         return accumulator+value
     }
-    const dealerScore = "Dealer has " + cardValuesArray.reduce(adder)
+     dealerScore1 = cardValuesArray.reduce(adder)
 
-    console.log(dealerScore)
-    return dealerScore
     
-
+     
+     
 }
 
 
@@ -123,8 +126,10 @@ const dealCards = function (){
         $dealerSection.append(dealerCard1)
         $dealerSection.append(dealerCard2)
         
-        playerScore()
-        dealerScore()
+        playerPoints()
+        dealerPoints()
+        displayScore() 
+        
     })
 }
 dealCards()
@@ -138,50 +143,102 @@ const playerHitCard = function (){
     let newCard = createCard()
     const $playerCards = $(".playerCards")
     $playerCards.append(newCard)
-    playerScore()
+    playerPoints()
+    displayScore()
+
+    const score = $("<div>")
+    const score2 = $("<div>")
+    const victorySpot = $(".player h2")
+    const victorySpot2 = $(".dealer h2")
+    if (playerScore1===21){
+        score.html("BlackJack")
+        victorySpot.append(score)
+        console.log(score, score2)
+    }
+    else if(playerScore1>21){
+        score.html("Player Busts, Dealer Wins")
+        score2.html("Dealer Wins")
+        victorySpot.append(score)
+        victorySpot2.append(score2)
+        console.log(score, score2)
+    }
 })
 }
 playerHitCard()
 
+
+
+
+
 const dealerHit = function (){
-   if(dealerScore<17){
-    let newCard = createCard()
-    const $dealerCards = $(".dealerCards")
-    $dealerCards.append(newCard)
-    dealerScore()
-}
+    const $dealerHitButton = $("button.dealerHit")
+    $dealerHitButton.on("click", (event)=>{
+        console.log(dealerScore1)
+        while(dealerScore1<17){
+
+         let newCard = createCard()
+         const $dealerCards = $(".dealerCards")
+         $dealerCards.append(newCard)
+         dealerPoints()
+        }
+         
+        displayScore()
+        gameVictory() 
+
+    })
     
+     
+ }
+ dealerHit()
+
+ const stay = function (){
+ const $stayButton = $(".stayButton")
+ $stayButton.on("click", (event)=>{
+    dealerHit()
 
 
+ })
+
+ }
+
+
+ const displayScore = function (){
+ console.log("Player has " + playerScore1)
+ console.log("Dealer has " + dealerScore1)
 }
 
-const gameRules = function (){
+const gameVictory = function (){
+    
     const score = $("<div>")
     const score2 = $("<div>")
     const victorySpot = $(".player")
     const victorySpot2 = $(".dealer")
-    if (dealerScore===21){
+    if (dealerScore1===21){
         
         score2.html("Dealer Wins")
         score.html("Player Wins")
         victorySpot.append(score)
         victorySpot2.append(score2)
-
+        console.log(score, score2)
     }
-    else if (playerScore ===21){
+    else if (playerScore1 ===21){
         score.html("BlackJack")
-        
         victorySpot.append(score)
+        console.log(score, score2)
     }
-    else if (playerScore===21 && dealerScore===21){
-        
+    else if (playerScore1===21 && dealerScore1===21){
         score.html("Player Pushes")
         const victorySpot = $(".player")
         victorySpot.append(score)
+        console.log(score, score2)
     }
-    else{
+    else if(playerScore1>21){
         score.html("Player Busts, Dealer Wins")
+        score2.html("Dealer Wins")
+        victorySpot.append(score)
+        victorySpot2.append(score2)
+        console.log(score, score2)
     }
+    else {}
 
 }
-

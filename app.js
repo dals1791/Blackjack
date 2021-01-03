@@ -179,8 +179,7 @@ const dealerHit = function (){
             displayDealerScore()
             gameVictory() 
         }
-        
-        gameVictory() 
+         
     }
     
      

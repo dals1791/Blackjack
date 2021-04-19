@@ -67,4 +67,10 @@ const dealerHit = function (){
     }
      
 }
-export {dealCards, playerHitCard, dealerHit};
+const stay = function (){
+    const $stayButton = $(".stayButton")
+    $stayButton.on("click", (event)=>{
+        dealerHit()
+    })
+ }
+export {dealCards, playerHitCard, dealerHit, stay};

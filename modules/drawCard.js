@@ -1,4 +1,6 @@
  import {cardDeck} from './cardDeck.js'
+ 
+ // Pulls a random card from the deck and removes it from the deck.
  const drawCard = function (){
     const randCard = Math.floor(Math.random()*cardDeck.length);
     const card = cardDeck[randCard]

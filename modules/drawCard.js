@@ -11,7 +11,7 @@
     
     cardDeck.splice(randCard, 1)
     console.log(cardDeck.length)
-    $('.cardDeck').html(cardDeck.length)
+    $('.cardDeck').html(cardDeck.length + " left")
     return $div.hide()
     
 }

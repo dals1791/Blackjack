@@ -43,7 +43,7 @@ let cardDeck = []
            cardDeck.push(cardObject)
         }
         const cardDeckLocation = $('.cardDeck')
-        cardDeckLocation.html(cardDeck.length)
+        cardDeckLocation.html(cardDeck.length + " left")
     }
     export {cardDeck};
     export default createCardDeck;

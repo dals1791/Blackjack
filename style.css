@@ -24,7 +24,7 @@ header button{
 .dealerHeader{
     display: grid;
     height: fit-content;
-    grid-template-columns: 70% 30%;
+    grid-template-columns: 60% 40%;
     grid-template-rows: 50% 50%;
     justify-content: center;
     margin-bottom: 1em;
@@ -33,10 +33,15 @@ header button{
 
 }
 .cardDeck{
-    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
     border: 1px solid;
-    width: 5em;
-    height:6.5em;
+    width: 4em;
+    height:5em;
+    font-weight: bold;
+    font-size: 24px;
 }
 /* .button {
   height: 50px;

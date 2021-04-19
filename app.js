@@ -1,69 +1,16 @@
+import createCardDeck from './modules/cardDeck.js';
+import {cardDeck} from './modules/cardDeck.js';
+import drawCard from './modules/drawCard.js';
+
 var dealerScore1 =0 
 var playerScore1 =0
 
-// Creates a card Deck and stores the card object into an array
-let cardDeck = []
-    const createCardDeck = function (){
-        
-        for (let i=0; i<52; i+=1){
-            const number = i%13
-            let cardName = ""
-            let cardValue=null
-            if (number===0){
-                cardName="King"
-                cardValue=10
-            }
-            else if(number===1){
-                cardName="Ace"
-                cardValue=11
-            }
-            else if (number===11){
-                cardName="Jack"
-                cardValue=10
-            }
-            else if (number===12){
-                cardName="Queen"
-                cardValue=10
-            }
-            else{
-                cardName = number.toString()
-                cardValue = number
-            }
+createCardDeck() 
 
-            if (i<13){
-                cardName+=" of Spades"
-            }
-            else if(i<26){
-                cardName+=" of Hearts"
-            }
-            else if (i<39){
-                cardName+=" of Clubs"
-            }
-            else{
-                cardName+=" of Diamonds"
-            }
-            const cardObject = {"description": cardName, "value": cardValue}
-           cardDeck.push(cardObject)
-        }
-        
-    }
-
-createCardDeck()
 
 // ------------------------------------------------------------
 // Pulls a random card from the deck and removes it from the deck.
-const createCard = function (){
-    const randCard = Math.floor(Math.random()*cardDeck.length);
-    const card = cardDeck[randCard]
-    const $div = $("<div>")
-    $div.addClass("card")
-    $div.html(card.description)
-    $div.attr("value", card.value)
-    
-    cardDeck.splice(randCard, 1)
-    return $div
-    
-}
+
 var playerPoints = function (){
     
     const cardValues = $("section .playerCards").children()
@@ -113,10 +60,10 @@ var dealerPoints = function (){
 const dealCards = function (){
     const $dealCards = $(".dealButton")
     $dealCards.on("click", (event)=>{
-        const playerCard1= createCard()
-        const playerCard2 = createCard()
-        const dealerCard1 = createCard()
-        const dealerCard2 = createCard()
+        const playerCard1= drawCard()
+        const playerCard2 = drawCard()
+        const dealerCard1 = drawCard()
+        const dealerCard2 = drawCard()
 
         const $playerSection = $("section .playerCards")
         const $dealerSection = $("section .dealerCards")
@@ -143,7 +90,7 @@ dealCards()
 const playerHitCard = function (){
     const $hitCard = $("button.hitButton")
     $hitCard.on("click", (event)=>{
-    let newCard = createCard()
+    let newCard = drawCard()
     const $playerCards = $(".playerCards")
     $playerCards.append(newCard)
     playerPoints()
@@ -167,7 +114,7 @@ const dealerHit = function (){
         if (dealerScore1<17){
             
             while(dealerScore1<17){
-                let newCard = createCard()
+                let newCard = drawCard()
                 const $dealerCards = $(".dealerCards")
                 $dealerCards.append(newCard)
                 dealerPoints()

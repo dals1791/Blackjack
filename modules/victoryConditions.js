@@ -8,7 +8,6 @@ const gameVictory = function (){
     score.addClass("result")
     score2.addClass("result")
     if (dealerScore1===21){
-        
         blackJack()
     }
     else if (playerScore1 ===21){
@@ -31,7 +30,12 @@ const gameVictory = function (){
     else if(dealerScore1>21){
         bust()
     }
-    else {}
+    else {
+        score2.html("Dealer Wins")
+        score.html("Player Loses")
+        victorySpot.append(score)
+        victorySpot2.append(score2)
+    }
 
 }
 const blackJack = function (){

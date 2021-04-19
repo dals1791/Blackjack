@@ -8,14 +8,12 @@ const CVA = (cardValues)=>{
         return parseInt(card.attributes.value.value)
     })
 }
- 
-
 const playerPoints = function (){
     const cardValues = $("section .playerCards").children()
     let array = CVA(cardValues)
     playerScore1 = array.reduce((acc, val)=>acc+val)
     const scoreDisplay = $(".player h2")
-    scoreDisplay.append(" has " + playerScore1)
+    scoreDisplay.html("Player has " + playerScore1)
 
 }
 const dealerPoints = function (){
@@ -23,7 +21,7 @@ const dealerPoints = function (){
     let array = CVA(cardValues)
     dealerScore1 = array.reduce((acc, val)=>acc+val)
     const scoreDisplay = $(".dealer h2")
-    scoreDisplay.append(" has " + dealerScore1) 
+    scoreDisplay.html("Dealer has " + dealerScore1) 
 }
 
 const displayDealerScore = function (){

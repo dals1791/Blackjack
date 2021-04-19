@@ -10,7 +10,9 @@
     $div.attr("value", card.value)
     
     cardDeck.splice(randCard, 1)
-    return $div
+    console.log(cardDeck.length)
+    $('.cardDeck').html(cardDeck.length)
+    return $div.hide()
     
 }
 export default drawCard

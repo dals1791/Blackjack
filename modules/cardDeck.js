@@ -1,5 +1,6 @@
 // Creates a card Deck and stores the card object into an array
 let cardDeck = []
+
  function createCardDeck(){
         for (let i=0; i<52; i+=1){
             const number = i%13
@@ -41,7 +42,8 @@ let cardDeck = []
             const cardObject = {"description": cardName, "value": cardValue}
            cardDeck.push(cardObject)
         }
-        
+        const cardDeckLocation = $('.cardDeck')
+        cardDeckLocation.html(cardDeck.length)
     }
     export {cardDeck};
     export default createCardDeck;

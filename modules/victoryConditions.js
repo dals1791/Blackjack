@@ -3,8 +3,8 @@ import {playerScore1, dealerScore1} from './points.js'
 const gameVictory = function (){
     const score = $("<div>")
     const score2 = $("<div>")
-    const victorySpot = $(".player h2")
-    const victorySpot2 = $(".dealer h2")
+    const victorySpot = $(".playerContainer h2")
+    const victorySpot2 = $(".dealerContainer h2")
     score.addClass("result")
     score2.addClass("result")
     if (dealerScore1===21){
@@ -15,7 +15,7 @@ const gameVictory = function (){
     }
     else if (playerScore1===dealerScore1){
         score.html("Player Pushes")
-        const victorySpot = $(".player")
+        const victorySpot = $(".playerContainer")
         victorySpot.append(score)
     }
     else if(dealerScore1<playerScore1){
@@ -41,8 +41,8 @@ const gameVictory = function (){
 const blackJack = function (){
     const score = $("<div>")
     const score2 = $("<div>")
-    const victorySpot = $(".player h2")
-    const victorySpot2 = $(".dealer h2")
+    const victorySpot = $(".playerContainer h2")
+    const victorySpot2 = $(".dealerContainer h2")
     score.addClass("result")
     score2.addClass("result")
     if (dealerScore1===21){
@@ -61,8 +61,8 @@ const blackJack = function (){
 const bust = function (){
     const score = $("<div>")
     const score2 = $("<div>")
-    const victorySpot = $(".player h2")
-    const victorySpot2 = $(".dealer h2")
+    const victorySpot = $(".playerContainer h2")
+    const victorySpot2 = $(".dealerContainer h2")
     score.addClass("result")
     score2.addClass("result")
     if (playerScore1>21){

@@ -14,6 +14,8 @@ const dealCards = function (){
         const playerCard1= drawCard()
         const playerCard2 = drawCard()
         const dealerCard1 = drawCard()
+        dealerCard1.addClass("hidden")
+        
         const dealerCard2 = drawCard()
         
         appendCard(playerCard1, 'player');
@@ -26,8 +28,8 @@ const dealCards = function (){
                     appendCard(dealerCard2, 'dealer');
                     dealerCard2.show('normal', 'swing');
                     playerPoints();
-                    dealerPoints();
-                    displayDealerScore();
+                    // dealerPoints();
+                    // displayDealerScore();
                     displayPlayerScore();
                     blackJack()
                     bust()
@@ -71,6 +73,9 @@ const dealerHit = function (){
 const stay = function (){
     const $stayButton = $(".stayButton")
     $stayButton.on("click", (event)=>{
+        const dealerCard1 =$('.dealerCards').children().first()
+        dealerCard1.css('background-color', 'white')
+        dealerCard1.css('color', 'black')
         if(dealerScore1<17){
             
             while(dealerScore1<17){

@@ -12,7 +12,7 @@ const playerPoints = function (){
     const cardValues = $("section .playerCards").children()
     let array = CVA(cardValues)
     playerScore1 = array.reduce((acc, val)=>acc+val)
-    const scoreDisplay = $(".player h2")
+    const scoreDisplay = $(".playerContainer h2")
     scoreDisplay.html("Player has " + playerScore1)
 
 }
@@ -20,7 +20,7 @@ const dealerPoints = function (){
     const cardValues = $("section .dealerCards").children()
     let array = CVA(cardValues)
     dealerScore1 = array.reduce((acc, val)=>acc+val)
-    const scoreDisplay = $(".dealer h2")
+    const scoreDisplay = $(".dealerContainer h2")
     scoreDisplay.html("Dealer has " + dealerScore1) 
 }
 

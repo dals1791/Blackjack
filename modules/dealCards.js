@@ -2,6 +2,9 @@ import drawCard from './drawcard.js'
 import {playerScore1, dealerScore1, playerPoints, dealerPoints, displayPlayerScore, displayDealerScore} from './points.js'
 import {gameVictory, blackJack, bust} from './victoryConditions.js'
 
+//Define variables
+const dealCardsBtn = $(".dealButton")
+const dealAgainBtn = $('.dealAgainBtn')
 // Deals two starting cards to the player and dealer
 const appendCard = (card, type)=>{
     const section = $(`section .${type}Cards`);
@@ -9,15 +12,19 @@ const appendCard = (card, type)=>{
 }
 
 const dealCards = function (){
-    const $dealCards = $(".dealButton")
-    $dealCards.on("click", (event)=>{
-        const playerCard1= drawCard()
-        const playerCard2 = drawCard()
-        const dealerCard1 = drawCard()
-        dealerCard1.addClass("hidden")
-        
-        const dealerCard2 = drawCard()
-        
+        displayDealerScore()
+        displayPlayerScore()
+        //clears playing field prior to deal.
+        $('.cardLocation').empty()
+        $('.playerContainer h2').html('Player');
+        $('.dealerContainer h2').html('Dealer');
+        //draws two cards fordealer and player
+        const playerCard1= drawCard();
+        const playerCard2 = drawCard();
+        const dealerCard1 = drawCard();
+        dealerCard1.addClass("hidden");
+        const dealerCard2 = drawCard();
+    
         appendCard(playerCard1, 'player');
         
         playerCard1.show('normal', 'swing', ()=>{
@@ -28,16 +35,20 @@ const dealCards = function (){
                     appendCard(dealerCard2, 'dealer');
                     dealerCard2.show('normal', 'swing');
                     playerPoints();
-                    // dealerPoints();
-                    // displayDealerScore();
                     displayPlayerScore();
                     blackJack()
                     bust()
                 });
             })
         })
-    });
 }
+dealCardsBtn.on('click', ()=>{
+    dealCards()
+})
+dealAgainBtn.on('click', ()=>{
+    $('.resultsContainer').css('display', 'none')
+    dealCards();
+})
 
 // Adds card to player hands
 const playerHitCard = function (){

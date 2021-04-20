@@ -1,12 +1,12 @@
 import {playerScore1, dealerScore1} from './points.js'
-
+const resultTxt = $(".resultTxt .result")
+const showResult =()=>{
+    $('.dealButton').css('display', 'none')
+    $('.resultDealer').html(dealerScore1)
+    $('.resultPlayer').html(playerScore1)
+    $('.resultsContainer').css('display', 'flex')
+}
 const gameVictory = function (){
-    const score = $("<div>")
-    const score2 = $("<div>")
-    const victorySpot = $(".playerContainer h2")
-    const victorySpot2 = $(".dealerContainer h2")
-    score.addClass("result")
-    score2.addClass("result")
     if (dealerScore1===21){
         blackJack()
     }
@@ -14,15 +14,12 @@ const gameVictory = function (){
         blackJack()
     }
     else if (playerScore1===dealerScore1){
-        score.html("Player Pushes")
-        const victorySpot = $(".playerContainer")
-        victorySpot.append(score)
+        resultTxt.html("Player Pushes")
+        showResult()
     }
     else if(dealerScore1<playerScore1){
-        score2.html("Dealer Loses")
-        score.html("Player Wins")
-        victorySpot.append(score)
-        victorySpot2.append(score2)
+        resultTxt.html("Player Wins")
+        showResult()
     }
     else if(playerScore1>21){
         bust()
@@ -31,51 +28,27 @@ const gameVictory = function (){
         bust()
     }
     else {
-        score2.html("Dealer Wins")
-        score.html("Player Loses")
-        victorySpot.append(score)
-        victorySpot2.append(score2)
+        score2.html("House Wins")
     }
-
 }
 const blackJack = function (){
-    const score = $("<div>")
-    const score2 = $("<div>")
-    const victorySpot = $(".playerContainer h2")
-    const victorySpot2 = $(".dealerContainer h2")
-    score.addClass("result")
-    score2.addClass("result")
     if (dealerScore1===21){
-        score2.html("Dealer has Blackjack")
-        score.html("Player Loses")
-        victorySpot.append(score)
-        victorySpot2.append(score2)
-        // console.log(score, score2)
+        resultTxt.html("House has Blackjack, Player Loses")
+        showResult()
     }
     else if (playerScore1 ===21){
-        score.html("Player has BlackJack")
-        victorySpot.append(score)
-        // console.log(score, score2)
+        score.html("Player has BlackJack!")
+        showResult()
     }
 }
 const bust = function (){
-    const score = $("<div>")
-    const score2 = $("<div>")
-    const victorySpot = $(".playerContainer h2")
-    const victorySpot2 = $(".dealerContainer h2")
-    score.addClass("result")
-    score2.addClass("result")
     if (playerScore1>21){
-        score.html("Player Busts, Dealer Wins")
-        score2.html("Player Busts, Dealer Wins")
-        victorySpot.append(score)
-        victorySpot2.append(score2)
+        resultTxt.html("Player Busts")
+        showResult()
     }
     else if (dealerScore1>21){
-        score.html("Dealer Busts, Player Wins")
-        score2.html("Dealer Busts, Player Wins")
-        victorySpot.append(score)
-        victorySpot2.append(score2)
+        resultTxt.html("House Busts, Player Wins")
+        showResult()
     }
 
 }

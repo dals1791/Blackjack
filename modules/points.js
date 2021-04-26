@@ -11,6 +11,10 @@ const CVA = (cardValues)=>{
 const playerPoints = function (){
     const cardValues = $("section .playerCards").children()
     let array = CVA(cardValues)
+    if(array.includes(11)){
+        console.log("Run Ace")
+        array = ace(array)
+    }
     if (array.length===0){
         playerScore1=0
     }else{
@@ -23,6 +27,10 @@ const playerPoints = function (){
 const dealerPoints = function (){
     const cardValues = $("section .dealerCards").children()
     let array = CVA(cardValues)
+    if(array.includes(11)){
+        console.log("Run Ace")
+        array = ace(array)
+    }
     if (array.length===0){
         dealerScore1=0
     }else{
@@ -38,5 +46,13 @@ const displayDealerScore = function (){
 }
 const displayPlayerScore = function (){
     console.log("Player has " + playerScore1)
+}
+const ace = (array) =>{
+    let index = array.indexOf(11)
+    let sum = array.reduce((acc, val)=>acc+val)
+    if (sum>21){
+        array.splice(index, 1, 1)
+    }
+    return array
 }
 export {dealerScore1, playerScore1, playerPoints, dealerPoints, displayDealerScore, displayPlayerScore};

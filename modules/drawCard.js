@@ -12,18 +12,12 @@
     
     cardDeck.splice(randCard, 1)
     $('.cardDeck').html(cardDeck.length + " left")
-    if(cardDeck.length<37){
-        $('.cardDeck').html("Shuffle Deck 🔀️ ") 
+    if(cardDeck.length<14){
+        createCardDeck(); 
     }
-    
     return $div.hide()
     
 }
-if(cardDeck.length<37){
-    $('.cardDeck').click(()=>{
-        $('.cardDeck').empty()
-        createCardDeck(); 
-    })
-}
+
 
 export default drawCard

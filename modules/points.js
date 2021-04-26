@@ -12,7 +12,6 @@ const playerPoints = function (){
     const cardValues = $("section .playerCards").children()
     let array = CVA(cardValues)
     if(array.includes(11)){
-        console.log("Run Ace")
         array = ace(array)
     }
     if (array.length===0){
@@ -28,7 +27,6 @@ const dealerPoints = function (){
     const cardValues = $("section .dealerCards").children()
     let array = CVA(cardValues)
     if(array.includes(11)){
-        console.log("Run Ace")
         array = ace(array)
     }
     if (array.length===0){

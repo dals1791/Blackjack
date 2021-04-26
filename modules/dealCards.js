@@ -1,6 +1,7 @@
 import drawCard from './drawcard.js'
 import {playerScore1, dealerScore1, playerPoints, dealerPoints, displayPlayerScore, displayDealerScore} from './points.js'
 import {gameVictory, blackJack, bust} from './victoryConditions.js'
+import {cardDeck} from './cardDeck.js'
 
 //Define variables
 const dealCardsBtn = $(".dealButton")
@@ -12,7 +13,7 @@ const appendCard = (card, type)=>{
 }
 
 const dealCards = function (){
-        
+    
         //clears playing field prior to deal.
         $('.cardLocation').empty()
         $('.playerContainer h2').html('Player');

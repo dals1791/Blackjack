@@ -2,6 +2,7 @@
 let cardDeck = []
 
  function createCardDeck(){
+        cardDeck=[]
         for (let i=0; i<52; i+=1){
             const number = i%13
             let cardName = ""
@@ -45,5 +46,7 @@ let cardDeck = []
         const cardDeckLocation = $('.cardDeck')
         cardDeckLocation.html(cardDeck.length + " left")
     }
+
+    
     export {cardDeck};
     export default createCardDeck;

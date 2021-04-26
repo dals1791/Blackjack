@@ -12,12 +12,12 @@ const appendCard = (card, type)=>{
 }
 
 const dealCards = function (){
-        displayDealerScore()
-        displayPlayerScore()
+        
         //clears playing field prior to deal.
         $('.cardLocation').empty()
         $('.playerContainer h2').html('Player');
         $('.dealerContainer h2').html('Dealer');
+        dealerPoints()
         //draws two cards fordealer and player
         const playerCard1= drawCard();
         const playerCard2 = drawCard();
@@ -79,8 +79,6 @@ const dealerHit = function (){
     gameVictory();
 }
     
-     
-
 const stay = function (){
     const $stayButton = $(".stayButton")
     $stayButton.on("click", (event)=>{
@@ -88,7 +86,6 @@ const stay = function (){
         dealerCard1.css('background-color', 'white')
         dealerCard1.css('color', 'black')
         if(dealerScore1<17){
-            
             while(dealerScore1<17){
                 dealerHit()
             }

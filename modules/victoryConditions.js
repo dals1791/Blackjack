@@ -28,7 +28,8 @@ const gameVictory = function (){
         bust()
     }
     else {
-        score2.html("House Wins")
+        resultTxt.html("House Wins")
+        showResult()
     }
 }
 const blackJack = function (){
@@ -37,7 +38,7 @@ const blackJack = function (){
         showResult()
     }
     else if (playerScore1 ===21){
-        score.html("Player has BlackJack!")
+        resultTxt.html("Player has BlackJack!")
         showResult()
     }
 }

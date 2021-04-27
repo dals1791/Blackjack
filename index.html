@@ -17,37 +17,27 @@
 </head>
 
 <body>
-    <header>
-        <h1>BlackJack</h1>
-        <button class="dealButton">Deal Cards</button>
-    </header>
+    <div class="cardDeckContainer">
+        <div class="cardDeck"></div>
+    </div>
+    <header><h1>BlackJack</h1></header>
+    
     <section class="dealerContainer">
-        <div class="dealerHeader">
-            <h2>Dealer</h2>
-            <div class="cardDeckContainer">
-                <div class="cardDeck"></div>
-            </div>
-        </div>
         
         <div class="dealerCards cardLocation">
-
+            <button class="dealButton">Deal Cards</button>
+            
         </div>
-
+        <h3>BlackJack Pays 3 to 2</h3>
     </section>
     <section class="playerContainer">
-        <h2>Player</h2>
-        
         <div class="playerCards cardLocation">
 
 
         </div>
-        <div class="playerButtons">
-            <button class="hitButton button">Hit</button>
-            <button class="stayButton button">Stay</button>
-        </div>
+        <h2>Player</h2>
     </section>
     <section class="resultsContainer">
-        <h4>Good Game!</h4>
         <div class='resultTxt'>
             <h4>Dealer has: <span class="resultDealer"></span></h4>
             <h4>Player has: <span class="resultPlayer"></span></h4>
@@ -57,6 +47,11 @@
         <p class="resultLoss">Losses: </p> -->
         <button class="dealAgainBtn">Deal Again</button>
     </section>
-
+    <footer>
+        <div class="playerButtons">
+            <button class="hitButton button">Hit</button>
+            <button class="stayButton button">Stay</button>
+        </div>
+    </footer>
 </body>
 </html>
